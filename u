@@ -1,0 +1,178 @@
+import 'package:flutter/material.dart';
+ 
+void main() => runApp(MyApp());
+ 
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final TextEditingController _acontroller = TextEditingController();
+  final TextEditingController _bcontroller = TextEditingController();
+  final TextEditingController _ccontroller = TextEditingController();
+  final TextEditingController _dcontroller = TextEditingController();
+  double a=0.0, b=0.0, c=0,d=0.0, resultAddition=0.0, resultSubraction=0.0, resultMultiple=0.0, resultDivision=0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('FRACTION CALCULATOR'),
+        ),
+      
+   body:
+
+   Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+      Container(
+      decoration: BoxDecoration(color: Colors.white),
+      child: Center(
+        child: Text(
+          'FRACTION CALCULATOR',
+          textDirection: TextDirection.ltr,
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.blueGrey,
+          ),
+        ),
+      ),
+    ),
+            
+          Container(
+              width: 80,
+              child: TextField(
+              decoration: InputDecoration(
+                fillColor: Colors.lightBlue[100],
+                filled: true,
+                border: OutlineInputBorder(
+                borderRadius:BorderRadius.circular(10))),
+                keyboardType: TextInputType.numberWithOptions(),
+                controller: _acontroller,
+          ),
+        ), 
+        
+        const Divider(
+          color: Colors.black,
+          height: 20,
+          thickness: 5,
+          indent: 140,
+          endIndent: 140,
+          ),
+           
+          Container(
+              width: 80,
+              child: TextField(
+              decoration: InputDecoration(
+                fillColor: Colors.lightBlue[100],
+                filled: true,
+                border: OutlineInputBorder(
+                borderRadius:BorderRadius.circular(10))),
+                keyboardType: TextInputType.numberWithOptions(),
+                controller: _bcontroller,
+
+          ),
+        ),       
+    
+      
+      Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+        Padding(
+            padding: EdgeInsets.all(5),
+            child: RaisedButton(
+            child: Text("+"),
+            onPressed: _onPress,
+            ),
+          ),
+        Padding(
+            padding: EdgeInsets.all(5),
+            child: RaisedButton(
+            child: Text("-"),
+            onPressed: _onPress,
+            ),
+          ),
+        Padding(
+            padding: EdgeInsets.all(5),
+            child: RaisedButton(
+            child: Text("X"),
+            onPressed: _onPress,
+            ),
+          ), 
+        Padding(
+            padding: EdgeInsets.all(5),
+            child: RaisedButton(
+            child: Text("/"),
+            onPressed: _onPress,
+           ),
+         ),
+          ],
+      ),
+ 
+  Container(
+              width: 80,
+              child: TextField(
+              decoration: InputDecoration(
+                fillColor: Colors.lightBlue[100],
+                filled: true,
+                border: OutlineInputBorder(
+                borderRadius:BorderRadius.circular(10))),
+                keyboardType: TextInputType.numberWithOptions(),
+                controller: _ccontroller,
+
+          ),
+        ), 
+       const Divider(
+          color: Colors.black,
+          height: 20,
+          thickness: 5,
+          indent: 140,
+          endIndent: 140,
+          ),
+           
+      
+        Container(
+              width: 80,
+              child: TextField(
+              decoration: InputDecoration(
+                fillColor: Colors.lightBlue[100],
+                filled: true,
+                border: OutlineInputBorder(
+                borderRadius:BorderRadius.circular(10))),
+                keyboardType: TextInputType.numberWithOptions(),
+                controller: _dcontroller,
+
+          ),
+        ), 
+  Text(
+          'Note: Fill the blank first that calculate',
+          textDirection: TextDirection.ltr,
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
+  Text("Result: $resultAddition$resultSubraction$resultMultiple$resultDivision"),
+          ],  
+      ),
+    ),
+      );
+  }
+  void _onPress() {
+    setState(() {
+     a = double.parse(_acontroller.text);
+     b = double.parse(_bcontroller.text);
+     c = double.parse(_ccontroller.text);
+     d = double.parse(_dcontroller.text);
+     resultAddition = ((a*d)+(b*c))/(b*d);
+     resultSubraction = ((a*d)-(b*c))/(b*d);
+     resultMultiple = (a*c)/(b*d);
+     resultDivision = (a*d)/(b*c);
+  }
+
+);
+}
+}
